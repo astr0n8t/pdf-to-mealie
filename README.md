@@ -6,7 +6,7 @@ The solution I found helped me import ~150 recipes into Mealie with minimal edit
 
 ## Step 1
 
-Generate the PDFs using [fabric-ai](https://github.com/danielmiessler/fabric/) and poppler's pdftotext (replace <MODEL> with your LLM):
+Generate the PDFs using [fabric-ai](https://github.com/danielmiessler/fabric/) and poppler's pdftotext (replace \<MODEL\> with your LLM):
 ```
 for FILENAME in ./pdfs/*.pdf; do FILENAME=$(echo $FILENAME | sed -e 's/\.\/pdfs\///g' | sed -e 's/\.pdf//g'); pdftotext pdfs/$FILENAME.pdf - | fabric -p ./recipe.md -m '<MODEL>' | grep -v '```' > recipes/$FILENAME.json; done
 ```
